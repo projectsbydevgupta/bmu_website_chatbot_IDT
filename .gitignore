@@ -91,6 +91,10 @@ Desktop.ini
 *.sqlite3
 *.db
 
+# Presentations and PDF documents
+*.pdf
+*.pptx
+
 # Optional model/vector artifacts (uncomment if generated locally)
 # vector_store/
 # chroma/
