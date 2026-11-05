@@ -1,7 +1,7 @@
 # BMU Website Chatbot 2.0: Agentic RAG System
 
 [![Production Status](https://img.shields.io/badge/Production-Live%20on%20AWS%20EC2-22c55e?style=for-the-badge&logo=amazonaws&logoColor=white)](http://13.51.178.39:8000/dashboard/)
-[![CI/CD Quality Gate](https://img.shields.io/badge/CI%2FCD%20Gate-20%2F20%20Tests%20Passing-38bdf8?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/projectsbydevgupta/bmu_website_chatbot_2/actions)
+[![CI/CD Quality Gate](https://img.shields.io/badge/CI%2FCD%20Gate-20%2F20%20Tests%20Passing-38bdf8?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/projectsbydevgupta/bmu_website_chatbot_IDT/actions)
 [![LangGraph](https://img.shields.io/badge/LangGraph-Tri--Agent%20RAG-f59e0b?style=for-the-badge&logo=langchain&logoColor=white)](https://langchain-ai.github.io/langgraph/)
 [![Embeddings](https://img.shields.io/badge/BGE--Large-1%2C024--dim%20Dense%20Vectors-818cf8?style=for-the-badge)](https://huggingface.co/BAAI/bge-large-en-v1.5)
 [![Arize Phoenix](https://img.shields.io/badge/Arize%20Phoenix-Observability-ec4899?style=for-the-badge)](http://13.51.178.39:6006/)
@@ -132,8 +132,8 @@ BMU_WEBSITE_CHATBOT-main/
 
 ### 2. Clone & Install
 ```bash
-git clone https://github.com/projectsbydevgupta/bmu_website_chatbot_2.git
-cd bmu_website_chatbot_2
+git clone https://github.com/projectsbydevgupta/bmu_website_chatbot_IDT.git
+cd bmu_website_chatbot_IDT
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
@@ -169,10 +169,6 @@ Open [http://localhost:8000/dashboard/](http://localhost:8000/dashboard/) to int
 
 ---
 
-## 👥 Project Team & Credits
+## 🏛️ Institutional Attribution
 
-Developed as part of the Capstone Project at **BML Munjal University**:
-
-* **Dev Gupta** (Roll No: 230685) — Full-Stack & AWS Cloud Production Deployment
-* **Aditya Agrawal** (Roll No: 230710) — Agentic RAG, LangGraph & ChromaDB Cloud
-* **Chaitanya Jhindal** (Roll No: 230707) — JEV Guardrails & CI/CD Pipeline
+Developed as an academic capstone initiative for **BML Munjal University** (School of Engineering & Technology).
