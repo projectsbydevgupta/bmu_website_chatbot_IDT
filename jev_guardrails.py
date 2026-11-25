@@ -59,8 +59,24 @@ except ImportError:
             self.input_tokens = input_tokens
             self.output_tokens = output_tokens
 
-load_dotenv()
+ENV_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+load_dotenv(ENV_PATH)
 TYPESAFE_API_KEY = os.getenv("TYPESAFE_API_KEY", "").strip()
+TYPESAFE_MODEL = os.getenv("TYPESAFE_MODEL", "").strip() or os.getenv("TYPESAFE_DEFAULT_MODEL", "").strip() or None
+
+
+def _normalize_typesafe_base_url(raw_url: Optional[str]) -> Optional[str]:
+    """Ensure base_url points to the API root (not duplicated /v1/systemone)."""
+    url = (raw_url or "").strip().rstrip("/")
+    if not url:
+        return None
+    for suffix in ("/v1/systemone", "/v1"):
+        if url.lower().endswith(suffix):
+            url = url[: -len(suffix)].rstrip("/")
+    return url or None
+
+
+TYPESAFE_BASE_URL = _normalize_typesafe_base_url(os.getenv("TYPESAFE_BASE_URL"))
 
 
 class InputGuardrailDecision(BaseModel):
@@ -143,7 +159,12 @@ class JevGuardrail:
 
         if TYPESAFE_SDK_AVAILABLE and self.api_key:
             try:
-                self.client = TypeSafeClient(api_key=self.api_key)
+                client_kwargs: Dict[str, Any] = {"api_key": self.api_key}
+                if TYPESAFE_BASE_URL:
+                    client_kwargs["base_url"] = TYPESAFE_BASE_URL
+                if TYPESAFE_MODEL:
+                    client_kwargs["model"] = TYPESAFE_MODEL
+                self.client = TypeSafeClient(**client_kwargs)
                 self.has_live_client = True
             except Exception as e:
                 print(f"[JEV Guardrail] Warning: Could not initialize TypeSafeClient ({e}). Using local System-One engine.")

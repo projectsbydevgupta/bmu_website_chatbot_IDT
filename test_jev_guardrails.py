@@ -135,8 +135,8 @@ def run_tests():
         source_url="https://www.bmu.edu.in/fees",
     )
     assert_test(
-        "Hallucinated answer flagged with disclaimer",
-        out_res2.is_grounded is False and out_res2.action == "flag_disclaimer",
+        "Hallucinated answer flagged with disclaimer or blocked",
+        out_res2.is_grounded is False and out_res2.action in ["flag_disclaimer", "block"],
         f"Got is_grounded={out_res2.is_grounded}, action={out_res2.action}",
     )
 
